@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#dcebe8"/><stop offset="1" stop-color="#f1e7d5"/></linearGradient><linearGradient id="ground" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#5f665f"/><stop offset="1" stop-color="#3f4844"/></linearGradient></defs>
+<rect width="1200" height="760" fill="url(#sky)"/><circle cx="1010" cy="125" r="68" fill="#f0c36b" opacity=".9"/>
+<rect y="360" width="1200" height="400" fill="url(#ground)"/>
+<path d="M0 520 C180 455 310 575 500 510 S850 460 1200 535 L1200 760 L0 760Z" fill="#545b55"/>
+<path d="M0 610 C190 560 350 655 545 605 S900 555 1200 620" fill="none" stroke="#d6bd76" stroke-width="14" stroke-dasharray="42 30"/>
+<g opacity=".7"><rect x="70" y="300" width="245" height="115" fill="#b7a589"/><polygon points="45,300 192,220 340,300" fill="#8d7862"/><rect x="120" y="330" width="55" height="85" fill="#756653"/><rect x="225" y="330" width="55" height="85" fill="#756653"/></g>
+<g opacity=".65"><rect x="850" y="285" width="250" height="135" fill="#c1af8e"/><rect x="900" y="330" width="50" height="90" fill="#786b57"/><rect x="1000" y="330" width="50" height="90" fill="#786b57"/></g>
+<rect x="58" y="55" rx="20" width="560" height="155" fill="#fff" opacity=".92"/>
+<text x="92" y="103" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#12213B">Street Lighting</text>
+<text x="92" y="146" font-family="Arial,sans-serif" font-size="36" font-weight="700" fill="#245E60">Street Lights</text>
+<text x="92" y="182" font-family="Arial,sans-serif" font-size="21" fill="#12213B">Gurudwara Road, Nankana Sahib</text>
+</svg>
