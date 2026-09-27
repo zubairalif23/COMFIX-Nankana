@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import {
   MapContainer,
   TileLayer,
@@ -110,6 +111,8 @@ export default function MapPreview({
   pinY = 45,
   label = 'Tap anywhere on the map to place the issue pin',
 }) {
+  const { pathname } = useLocation();
+
   const [position, setPosition] = useState(
     xyToLatLng(pinX, pinY)
   );
@@ -125,6 +128,7 @@ export default function MapPreview({
     <div className="overflow-hidden rounded-lg border border-ink/15 bg-white">
       <div className="relative">
         <MapContainer
+          key={`${pathname}-${interactive ? 'interactive' : 'static'}`}
           center={NANKANA_SAHIB}
           zoom={14}
           scrollWheelZoom={true}
