@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import {
   MapContainer,
   TileLayer,
@@ -111,7 +110,8 @@ export default function MapPreview({
   pinY = 45,
   label = 'Tap anywhere on the map to place the issue pin',
 }) {
-  const { pathname } = useLocation();
+  const containerRef = useRef(null);
+  const mapRef = useRef(null);
 
   const [position, setPosition] = useState(
     xyToLatLng(pinX, pinY)
@@ -124,11 +124,32 @@ export default function MapPreview({
     setPosition(xyToLatLng(pinX, pinY));
   }, [pinX, pinY]);
 
+  /*
+    Safety net for Leaflet's "Map container is already initialized"
+    error. This throws (and, with no error boundary, blanks the whole
+    app) if a map is ever created on a DOM node that still carries a
+    previous Leaflet instance's internal id — something that can
+    happen on route transitions, especially on slower devices.
+    Explicitly clearing it on unmount guarantees a clean slate.
+  */
+  useEffect(() => {
+    return () => {
+      mapRef.current = null;
+      const node = containerRef.current;
+      if (node && node._leaflet_id) {
+        delete node._leaflet_id;
+      }
+    };
+  }, []);
+
   return (
     <div className="overflow-hidden rounded-lg border border-ink/15 bg-white">
       <div className="relative">
         <MapContainer
-          key={`${pathname}-${interactive ? 'interactive' : 'static'}`}
+          ref={(instance) => {
+            mapRef.current = instance;
+            containerRef.current = instance ? instance.getContainer() : null;
+          }}
           center={NANKANA_SAHIB}
           zoom={14}
           scrollWheelZoom={true}
